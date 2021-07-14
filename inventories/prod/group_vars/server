@@ -1,0 +1,21 @@
+---
+    sudo_defaults:
+        - defaults: env_reset
+
+    sudo_users:
+        - name: 'windy'
+          nopasswd: yes
+
+    # Default theme
+    oh_my_zsh_theme: fino
+
+    # Default plugins
+    oh_my_zsh_plugins:
+        - git common-aliases history history-substring-search
+
+    # Wether to install by default for all specified users.
+    # May be overridden by `oh_my_zsh: install:` under each user.
+    oh_my_zsh_install: yes
+
+    users:
+        - username: windy

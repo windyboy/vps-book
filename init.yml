@@ -1,0 +1,51 @@
+---
+- name: create management user
+  hosts: server
+  remote_user: root
+
+  tasks:
+    - name: make sure basic packages been installed
+      package:
+        name: "{{item}}"
+        state: present
+      with_items: 
+        - wget
+        - curl
+        - zsh
+        - git
+        - mosh
+        - mtr
+        - python3
+        - tmux
+        - dnsutils
+
+    - name: create user windy
+      user:
+        name: windy
+        shell: /bin/zsh
+
+    - name: Set authorized key
+      authorized_key:
+        user: windy
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+
+- name: oh my zsh
+  hosts: server
+  roles:
+    - role: gantsign.oh-my-zsh
+
+# - name: user sudo
+#   hosts: server
+#   remote_user: root
+#   roles:
+#     - weareinteractive.sudo
+
+# - name: install softwares
+#   hosts: server
+#   roles:
+#     - wares
+
+
+
+

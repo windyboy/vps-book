@@ -1,0 +1,4 @@
+---
+
+    oh_my_zsh_plugins:
+        - debian git common-aliases history history-substring-search
